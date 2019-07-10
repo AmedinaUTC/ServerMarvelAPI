@@ -1,18 +1,12 @@
 //Librerias Requeridas
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const config = require('./config/config');
+const  cors = require('cors')
 
 //Creación de la aplicación
 const app = express();
-
-//Conexión a BD mongodb
-mongoose.connect(config.database);
-mongoose.connection.on('error', function() {
-  console.info('Error: Could not connect to MongoDB.');
-});
-
+app.use(cors())
 //Puerto para servicio
 app.set('port', process.env.PORT || 8090);
 app.use(bodyParser.json());
